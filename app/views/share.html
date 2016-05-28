@@ -1,0 +1,13 @@
+<div ng-include="'views/header.html'">
+</div>
+<div ng-controller="ShareController">
+  <p>Your illustration</p>
+  <div>
+    <h4>{{singleuser[0].Name}}</h4>
+    <p>{{singleuser[0].Reason}}</p>
+    <img ng-src="api/assets/headers/{{singleuser[0].Image}}" class="vote_user"/>
+    <span ng-show="voted">Thanks for voting. You can still vote again in 24 hours</span>
+    <a class="btn btn-success" ng-click="download()">Download</a>
+    <a class="btn btn-success"  href="https://twitter.com/intent/tweet">Share</a>
+  </div>
+</div>

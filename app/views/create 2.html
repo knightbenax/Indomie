@@ -1,0 +1,77 @@
+
+
+<section class="in-create-section" ng-show="appflow=='create-message'">
+    <p class="in-message" >Tell the world what's unique about you</p>
+<form>
+    <textarea class="in-text-area" placeholder="I'm Like no other because..." maxlength="140" rows="1"></textarea>
+    <span class="in-form-highlight"></span>
+    <span class="in-form-bar"></span>
+    <label>140 chars. left to express your awesomeness</label>
+</form>
+<a class="in-next-button" ng-click="changeview('select-avatar')">Continue</a>
+</section>
+
+
+<section class="in-create-section" ng-show="appflow=='select-avatar'">
+    <p class="in-message">Select an Avatar Below</p>
+   <div class="in-avatar-preview-area">
+       <div class="in-avatar-image">
+           <img src="">
+       </div>
+       <a ng-click="modal.activate()" class="in-change-avatar-btn">Change Avatar
+       </a>
+    </div>
+<!--
+   <div zf-modal="" id="avatarCatalog" class="in-avatar-carousel-area">
+      <a zf-close="" class="close-button">×</a>
+       <ul class="in-avatar-carousel">
+           <li class="in-avatar-thumbnail">
+               <img src="../images/knewbie.png">
+           </li>
+       </ul>
+   </div>
+-->
+
+<a class="in-prev-button" ng-click="changeview('create-message')">Back</a>
+<a class="in-next-button" ng-click="changeview('upload-image')">Continue</a>
+</section>
+
+
+<section class="in-create-section" ng-show="appflow=='upload-image'">
+
+    <p class="in-message">Choose a face for your image</p>
+    <div class="in-avatar-preview-area">
+        <div class="in-avatar-image">
+            <img ng-src="">
+        </div>
+        <span class="in-avatar-caption">Use a clear image of your face</span>
+    </div>
+    <div class="in-action-choices-area">
+
+        <button class="in-upload-btn" >Upload a photo</button>
+       <span>or</span>
+
+            <button class="in-capture-btn">Take a Webcam Photo</button>
+        </div>
+
+    <a class="in-prev-button" ng-click="changeview('select-avatar')">Back</a>
+    <a class="in-next-button" ng-click="changeview('share-pic')">Continue</a>
+</section>
+
+
+<section class="in-create-section" ng-show="appflow=='share-pic'">
+
+    <p class="in-message"> Congratulations Youve Created your avatar</p>
+    <div class="in-avatar-preview-area">
+        <div class="in-avatar-image">
+            <img ng-src="">
+        </div>
+    </div>
+    <div class="in-action-choices-area">
+        <a class="in-share-btn">Share to Timeline</a>
+        <a class="in-share-btn">Use as Cover Photo</a>
+        <a class="in-share-btn">Tag Friends</a>
+    </div>
+    <a class="in-next-button" ng-click="" ng-href="#/vote">Submit for Voting</a>
+
+</section>

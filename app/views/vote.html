@@ -1,0 +1,13 @@
+<div ng-include="'views/header.html'">
+</div>
+<div ng-controller="VoteController as vote">
+  <p>Vote for your preferred person</p>
+  <div ng-if="loading"></div>
+  <div ng-repeat="user in users">
+    <h4>{{user.Name}}</h4>
+
+    <!--<p>{{user.Reason}}</p>-->
+    <img ng-src="images/assets/headers/{{user.Image}}" class="vote_user"/>
+    <a class="btn btn-success" ng-href="#/user/{{user.ID}}">View</a>
+  </div>
+</div>

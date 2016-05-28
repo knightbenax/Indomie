@@ -1,0 +1,86 @@
+<div class="hero" ng-controller="CreateController as create">
+<section class="in-create-section" ng-show="appflow=='create-message'">
+    <p class="in-message" >Tell the world what's unique about you</p>
+<form>
+  <input type="text" ng-model='myName' placeholder="My name is...."/>
+    <textarea class="in-text-area" placeholder="I'm Like no other because..." maxlength="140" rows="1" ng-model='myReason'></textarea>
+    <span class="in-form-highlight"></span>
+    <span class="in-form-bar"></span>
+    <label>140 chars. left to express your awesomeness</label>
+</form>
+<a class="in-next-button" ng-click="changeview('upload-image')" ng-hide="continueFirstPart()">Continue</a>
+</section>
+
+
+<section class="in-create-section" ng-show="appflow=='select-avatar'">
+    <p class="in-message">Select an Avatar Below</p>
+   <div class="in-avatar-preview-area">
+       <div class="in-avatar-image">
+           <img src="">
+       </div>
+       <a ng-click="modal.activate()" class="in-change-avatar-btn">Change Avatar
+       </a>
+    </div>
+<!--
+   <div zf-modal="" id="avatarCatalog" class="in-avatar-carousel-area">
+      <a zf-close="" class="close-button">×</a>
+       <ul class="in-avatar-carousel">
+           <li class="in-avatar-thumbnail">
+               <img src="../images/knewbie.png">
+           </li>
+       </ul>
+   </div>
+-->
+
+<a class="in-prev-button" ng-click="changeview('create-message')">Back</a>
+<a class="in-next-button" ng-click="changeview('upload-image')">Continue</a>
+</section>
+
+
+<section class="in-create-section" ng-show="appflow=='upload-image'">
+
+    <p class="in-message">Choose a face for your image</p>
+    <div class="in-avatar-preview-area">
+      <div class="demo_container in-avatar-image">
+          <img id='user_blob'/>
+      </div>
+        <span class="in-avatar-caption" ng-show='start'>Use a clear image of your face</span>
+        <span class="in-avatar-caption" ng-show='checkNoFaceCount()'>No face was detected in the picture. Probably due to it's quality. Select a face you want to use instead by dragging over the image</span>
+        <span class="in-avatar-caption" ng-show='checkSingleFaceCount()'>A face was detected. You can still adjust the area you want to use by dragging the crop box if you are not satisfied</span>
+        <span class="in-avatar-caption" ng-show='checkFaceCount()'>Looks that there is more than one face in this picture. Select the face you want to use by dragging over the image</span>
+        <span class="in-avatar-caption" ng-show='continue'>Nice. Face selected. Let's continue</span>
+    </div>
+    <div class="in-action-choices-area">
+
+        <div class="fileholder"><input type="file" name="file" id="file" accept="image/*" file-model="myFile" onchange="showPreview(this)"/></div>
+        <button class="in-upload-btn" onclick="callUpload()">Upload a photo</button>
+
+       <!--<span>or</span>
+
+            <!--<button class="in-capture-btn">Take a Webcam Photo</button>-->
+        </div>
+
+    <a class="in-prev-button" ng-click="changeview('create-message')">Back</a>
+    <a class="in-next-button" ng-click="uploadFile()">Continue</a>
+</section>
+
+
+<section class="in-create-section" ng-show="appflow=='share-pic'">
+
+    <p class="in-message"> Congratulations Youve Created your avatar</p>
+    <div class="in-avatar-preview-area" id="in-avatar-preview-area">
+
+        <div class="in-avatar-image">
+            <img ng-src="images/assets/headers/{{avatarimage}}">
+        </div>
+    </div>
+    <div class="in-action-choices-area">
+        <a class="in-share-btn" http="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=http://getcentre.com/indomie">Share to Facebook</a>
+        <a class="in-share-btn" target="_blank" href="https://twitter.com/intent/tweet?text=Share%20your%20indomie%20avatar&button_hashtag=IndomieContest">Share to Twitter</a>
+        <a class="in-share-btn" ng-click="download()">Download</a>
+        <!--<a class="in-share-btn">Tag Friends</a>ng-click="download()"<span class='large_guys' ng-bind-html="getNameForDisplay()"></span>-->
+    </div>
+    <!--<a class="in-next-button" ng-click="" ng-href="#/vote">Submit for Voting</a>-->
+
+</section>
+</div>

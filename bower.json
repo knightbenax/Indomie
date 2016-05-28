@@ -1,0 +1,36 @@
+{
+  "name": "oblivion",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.2.16",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.1.0",
+    "bootstrap": "~3.1.1",
+    "angular-resource": "1.2.16",
+    "angular-cookies": "1.2.16",
+    "angular-sanitize": "1.2.16",
+    "angular-animate": "1.2.16",
+    "angular-touch": "1.2.16",
+    "angular-route": "1.2.16",
+    "jquery": "^2.2.3",
+    "jquery.facedetection": "^2.0.2",
+    "nprogress": "^0.2.0",
+    "tracking": "tracking.js#^1.1.2",
+    "AngularHammer": "ryanmullins-angular-hammer#^2.1.10",
+    "motion-ui": "~1.1.0",
+    "foundation-apps": "^1.2.0",
+    "cropper": "^2.3.0",
+    "angular-update-meta": "^1.9.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.16",
+    "angular-scenario": "1.2.16",
+    "jquery.facedetection": "^2.0.2"
+  },
+  "appPath": "app",
+  "resolutions": {
+    "angular": "^1.0.8",
+    "angular-animate": "~1.4.7",
+    "jquery": ">= 1.9.0"
+  }
+}

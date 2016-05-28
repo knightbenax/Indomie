@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js"  ng-app="oblivionApp">
+  <head ng-controller="HeadController as head">
+    <meta charset="utf-8">
+    <title>Indomie Facetracking Contest</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:text:title" content="Indomie Contest" />
+    <meta name="twitter:site" content="@theephodteam">
+    <meta name="twitter:creator" content="@theephodteam">
+    <meta name="twitter:image:src" content="http://getcentre.com/indomie/images/friend_edited.png">
+    <meta name="twitter:image" content="http://getcentre.com/indomie/images/friend_edited.png">
+    <meta name="twitter:description" content="Create your own 'like no other' indomie avator now">
+    <meta name="og:description" content="Create your own 'like no other' indomie avator now">
+
+    <meta property="og:image" content="http://getcentre.com/indomie/images/friend_edited.png" />
+    <meta property="og:title" content="Indomie Contest" />
+    <meta property="og:url" content="http://getcentre.com/indomie" />
+
+    <update-meta name="twitter:image:src" content="{{ $root.avatarimage }}"></update-meta>
+    <update-meta name="twitter:image" content="{{ $root.avatarimage }}"></update-meta>
+    <update-meta name="twitter:text:title" content="{{ $root.myName }}"></update-meta>
+    <update-meta property="og:title" content="{{ $root.myName }}"></update-meta>
+    <update-meta property="og:image" content="{{ $root.avatarimage }}"></update-meta>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/nprogress/nprogress.css" />
+    <link rel="stylesheet" href="bower_components/motion-ui/dist/motion-ui.css" />
+    <link rel="stylesheet" href="bower_components/cropper/dist/cropper.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animate.css" >
+    <link rel="stylesheet" href="styles/imgareaselect-default.css">
+
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="in-app-wrap">
+       <div class="in-app-container">
+        <header class="in-header-wrap">
+                 <img class="in-header-image" src="images/header_logo.png"><button class="in-header-btn">Login</button>
+        </header>
+
+        <section class="in-body-wrap"  ng-view="">
+
+        </section>
+
+        <footer class="in-footer-wrap">
+           <ul class="in-footer-bar">
+               <li class=""><a ng-href="#/home"><span class="in-home-icon"></span>Home</a></li>
+                <li class=""><a ng-href="#/create"><span class="in-create-icon"></span>Create</a></li>
+                <li class=""><a ng-href="#/vote"><span class="in-vote-icon"></span>Vote</a></li>
+            </ul>
+        </footer>
+      </div><!-----In app container----->
+    </div><!------ In app wrapper ------->
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/jquery.facedetection/dist/jquery.facedetection.min.js"></script>
+    <script src="bower_components/nprogress/nprogress.js"></script>
+    <script src="bower_components/dat-gui/build/dat.gui.js"></script>
+    <script src="bower_components/threejs/build/three.js"></script>
+    <script src="bower_components/tracking/build/tracking.js"></script>
+    <script src="bower_components/hammerjs/hammer.js"></script>
+    <script src="bower_components/AngularHammer/angular.hammer.js"></script>
+    <script src="bower_components/motion-ui/dist/motion-ui.js"></script>
+    <script src="bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js"></script>
+    <script src="bower_components/viewport-units-buggyfill/viewport-units-buggyfill.hacks.js"></script>
+    <script src="bower_components/tether/tether.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/foundation-apps/dist/js/foundation-apps.js"></script>
+    <script src="bower_components/foundation-apps/dist/js/foundation-apps-templates.js"></script>
+    <script src="bower_components/cropper/dist/cropper.js"></script>
+    <script src="bower_components/angular-update-meta/dist/update-meta.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/jquery.fileDownload.js"></script>
+        <script src="scripts/jquery.imgareaselect.min.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/services.js"></script>
+        <script src="scripts/tracklogic.js"></script>
+        <script src="scripts/html2canvas.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
