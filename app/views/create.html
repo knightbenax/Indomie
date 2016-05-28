@@ -74,6 +74,17 @@
             <img ng-src="images/assets/headers/{{avatarimage}}">
         </div>
     </div>
+
+    <div class="in-cartoon-parameters">
+      <input type="range" id="pattern" ng-model="pattern" min="0" max="100" value="70"/><span ng-bind="pattern"></span>
+      <input type="range" id="numlevels" ng-model="numlevels" min="2" max="100" value="6"/><span ng-bind="numlevels"></span>
+      <input type="range" id="edgemethod" ng-model="edgemethod" min="1" max="2" value="1"/><span ng-bind="edgemethod"></span>
+      <input type="range" id="edgeamount" ng-model="edgeamount" min="0" max="100" value="4"/><span ng-bind="egdeamount"></span>
+      <input type="range" id="brightness" ng-model="brightness" min="0" max="200" value="100"/><span ng-bind="brightness"></span>
+      <input type="range" id="saturation" ng-model="saturation" min="0" max="200" value="150"/><span ng-bind="saturation"></span>
+      <button class="in-upload-btn" onclick="callUpload()">Apply</button>
+    </div>
+
     <div class="in-action-choices-area">
         <a class="in-share-btn" http="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=http://getcentre.com/indomie">Share to Facebook</a>
         <a class="in-share-btn" target="_blank" href="https://twitter.com/intent/tweet?text=Share%20your%20indomie%20avatar&button_hashtag=IndomieContest">Share to Twitter</a>

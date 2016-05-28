@@ -46,7 +46,7 @@ try {
     }
 }
 
-/*function getConnection()
+function getConnection()
 {
     $dbhost="127.0.0.1";
     //$dbport="8889";
@@ -56,9 +56,9 @@ try {
     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;
-}*/
+}
 
-function getConnection()
+/*function getConnection()
 {
     $dbhost="localhost";
     //$dbport="8889";
@@ -68,7 +68,7 @@ function getConnection()
     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;
-}
+}*/
 
 function getUsers(){
   $sql = "SELECT * FROM Users ORDER BY id";
@@ -224,8 +224,8 @@ function daveHill($file_path){
   exec("bash " . __DIR__ . "/davehilleffect.sh " . $file_path . " " .  $file_path);
 }
 
-function cartoonImage($file_path){
-  exec("bash " . __DIR__ . "/cartoon.sh -p 70 -n 6 -e 3 " . $file_path . " " .  $file_path);
+function cartoonImage($file_path, $edge){
+  exec("bash " . __DIR__ . "/cartoon.sh -p 70 -n 6 -e " . $edge . " " . $file_path . " " .  $file_path);
 }
 
 function uploadPicture()
@@ -311,13 +311,12 @@ function uploadPicture()
 
     $thumb_im = imagecreatefromstring(file_get_contents($file_path));
 
-    stitchImagesWithBg($thumb_im, $file_path);
-
     //add the white bg behind each image
+    //stitchImagesWithBg($thumb_im, $file_path);
 
     $final_im = $timestamp . $newfilename;
 
-    cartoonImage($file_path);
+    cartoonImage($file_path, 3);
 
     toon($file_path);
 
@@ -338,7 +337,9 @@ function uploadPicture()
     //file_put_contents ($final_im, $imagick);
     //illustrateImage($file_path);
     $new_img = imagecreatefromstring(file_get_contents($file_path));
-    stitchImagesWithAvatar($new_img, $file_path);
+
+    //add the image with the avatar
+    //stitchImagesWithAvatar($new_img, $file_path);
 
 
 
@@ -367,7 +368,7 @@ function uploadPicture()
     $new_img_final = imagecreatefromstring(file_get_contents($file_path));
     $second_new_img_final = imagecreatefromstring(file_get_contents($file_path_x));
 
-    stitchImagesWithNameTag($new_img_final, $im, $file_path);
+    //stitchImagesWithNameTag($new_img_final, $im, $file_path);
 
     addUser($name, $reason, $final_im, $timestamp);
 

@@ -178,6 +178,13 @@ var app = angular.module("oblivionApp");
     $scope.start = true;
     $scope.continue = false;
 
+    $scope.pattern = 0;
+    $scope.numlevels = 0;
+    $scope.edgemethod = 0;
+    $scope.edgeamount = 0;
+    $scope.edgemethod = 0;
+    $scope.brightness = 0;
+    $scope.saturation = 0;
     $scope.myName = "";
     $scope.myReason = "";
     $scope.x1 = 0;
