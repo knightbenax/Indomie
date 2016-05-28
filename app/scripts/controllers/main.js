@@ -254,7 +254,8 @@ var app = angular.module("oblivionApp");
             }
 
       $http.post('api/edit_picture', data, config).success(function(return_data){
-        $scope.avatarimage = return_data;
+
+        $scope.avatarimage = return_data + "?" + Date.now();
         NProgress.done();
         //console.log($scope.singleuser.Name);
       });
