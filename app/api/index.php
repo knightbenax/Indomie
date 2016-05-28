@@ -26,6 +26,7 @@ try {
     $app = new \Api\Application();
     $app->post('/upload', 'uploadPicture');
     $app->post('/vote_user', 'voteUser');
+    $app->post('/edit_picture', 'editPicture');
     $app->get('/users', 'getUsers');
     $app->get('/get_image', 'getImage');
     $app->get('/user', 'getUser');
@@ -69,6 +70,29 @@ function getConnection()
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;
 }*/
+
+
+function editPicture(){
+  $pattern = $_POST["m_pattern"];
+  $numlevels = $_POST["m_numlevels"];
+  $edgemethod = $_POST["m_edgemethod"];
+  $edgeamount = $_POST["m_edgeamount"];
+  $brightness = $_POST["m_brightness"];
+  $saturation = $_POST["m_saturation"];
+
+  $im_file = $_POST["m_file"];
+
+  $former_file = $im_file;
+
+  $im_file = realpath(__DIR__ . '/..') . "/images/assets/headers/" . $im_file;
+
+  cartoonImage($im_file, 70, 6, 1, 4, 100, 150);
+
+  $date = new DateTime();
+  $timestamp = $date->getTimestamp();
+
+  echo $former_file . "?" . $timestamp;
+}
 
 function getUsers(){
   $sql = "SELECT * FROM Users ORDER BY id";
@@ -224,8 +248,8 @@ function daveHill($file_path){
   exec("bash " . __DIR__ . "/davehilleffect.sh " . $file_path . " " .  $file_path);
 }
 
-function cartoonImage($file_path, $edge){
-  exec("bash " . __DIR__ . "/cartoon.sh -p 70 -n 6 -e " . $edge . " " . $file_path . " " .  $file_path);
+function cartoonImage($file_path, $pattern, $numlevels, $edgemethod, $edgeamount, $brightness, $saturation){
+  exec("bash " . __DIR__ . "/cartoon.sh -p " . $pattern . " -n " . $numlevels . " -m " . $edgemethod . " -e " . $edgeamount . " -b " . $brightness . " -s " . $saturation . " " . $file_path . " " .  $file_path);
 }
 
 function uploadPicture()
@@ -316,7 +340,7 @@ function uploadPicture()
 
     $final_im = $timestamp . $newfilename;
 
-    cartoonImage($file_path, 3);
+    cartoonImage($file_path, 70, 6, 1, 4, 100, 150);
 
     toon($file_path);
 
@@ -370,7 +394,9 @@ function uploadPicture()
 
     //stitchImagesWithNameTag($new_img_final, $im, $file_path);
 
-    addUser($name, $reason, $final_im, $timestamp);
+    //addUser($name, $reason, $final_im, $timestamp);
+
+    echo $final_im;
 
     //imagedestroy($im);
 

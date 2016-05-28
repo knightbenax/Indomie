@@ -178,13 +178,12 @@ var app = angular.module("oblivionApp");
     $scope.start = true;
     $scope.continue = false;
 
-    $scope.pattern = 0;
-    $scope.numlevels = 0;
-    $scope.edgemethod = 0;
-    $scope.edgeamount = 0;
-    $scope.edgemethod = 0;
-    $scope.brightness = 0;
-    $scope.saturation = 0;
+    $scope.pattern = 70;
+    $scope.numlevels = 6;
+    $scope.edgemethod = 1;
+    $scope.edgeamount = 4;
+    $scope.brightness = 100;
+    $scope.saturation = 150;
     $scope.myName = "";
     $scope.myReason = "";
     $scope.x1 = 0;
@@ -234,6 +233,31 @@ var app = angular.module("oblivionApp");
       } else {
         return false;
       }
+    };
+
+    $scope.editPicture = function(){
+      NProgress.start();
+            var data = $.param({
+                m_pattern: $scope.pattern,
+                m_numlevels: $scope.numlevels,
+                m_edgemethod: $scope.edgemethod,
+                m_edgeamount: $scope.edgeamount,
+                m_brightness: $scope.brightness,
+                m_saturation: $scope.saturation,
+                m_file: $scope.avatarimage
+            });
+
+            var config = {
+              headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+              }
+            }
+
+      $http.post('api/edit_picture', data, config).success(function(return_data){
+        $scope.avatarimage = return_data;
+        NProgress.done();
+        //console.log($scope.singleuser.Name);
+      });
     };
 
     //$http.post('/api/upload', "").success(function(){

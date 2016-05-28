@@ -69,20 +69,43 @@
 
     <p class="in-message"> Congratulations Youve Created your avatar</p>
     <div class="in-avatar-preview-area" id="in-avatar-preview-area">
-
         <div class="in-avatar-image">
             <img ng-src="images/assets/headers/{{avatarimage}}">
         </div>
     </div>
 
     <div class="in-cartoon-parameters">
+      <div>Pattern</div>
       <input type="range" id="pattern" ng-model="pattern" min="0" max="100" value="70"/><span ng-bind="pattern"></span>
+      <br/>
+      <br/>
+
+      <div>Number Of Levels</div>
       <input type="range" id="numlevels" ng-model="numlevels" min="2" max="100" value="6"/><span ng-bind="numlevels"></span>
+      <br/>
+      <br/>
+
+      <div>Edge Method</div>
       <input type="range" id="edgemethod" ng-model="edgemethod" min="1" max="2" value="1"/><span ng-bind="edgemethod"></span>
-      <input type="range" id="edgeamount" ng-model="edgeamount" min="0" max="100" value="4"/><span ng-bind="egdeamount"></span>
+      <br/>
+      <br/>
+
+      <div>Edge Amount</div>
+      <input type="range" id="edgeamount" ng-model="edgeamount" min="0" max="100" value="4"/><span ng-bind="edgeamount"></span>
+      <br/>
+      <br/>
+
+      <div>Brightness</div>
       <input type="range" id="brightness" ng-model="brightness" min="0" max="200" value="100"/><span ng-bind="brightness"></span>
+      <br/>
+      <br/>
+
+      <div>Saturation</div>
       <input type="range" id="saturation" ng-model="saturation" min="0" max="200" value="150"/><span ng-bind="saturation"></span>
-      <button class="in-upload-btn" onclick="callUpload()">Apply</button>
+      <br/>
+      <br/>
+
+      <button class="in-upload-btn" ng-click="editPicture()">Apply</button>
     </div>
 
     <div class="in-action-choices-area">
