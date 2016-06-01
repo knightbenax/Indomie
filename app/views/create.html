@@ -109,8 +109,11 @@
     </div>
 
     <div class="in-action-choices-area">
-        <a class="in-share-btn" http="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=http://getcentre.com/indomie">Share to Facebook</a>
+        <a facebook-feed-share class="in-share-btn" data-picture="images/header_logo.png" data-url='http://google.com' data-shares='shares', data-description="Example text">Share to Facebook</a>
         <a class="in-share-btn" target="_blank" href="https://twitter.com/intent/tweet?text=Share%20your%20indomie%20avatar&button_hashtag=IndomieContest">Share to Twitter</a>
+
+        <a gplus class="in-share-btn" data-size="tall" data-href='http://google.com' data-action='share'></a>
+        <a pintrest data-href='http://google.com' class="in-share-btn"  data-description='testing share' data-img='http://plnkr.co/img/plunker.png' data-pin-do='buttonPin' data-pin-config='beside'>Pin This</a>
         <a class="in-share-btn" ng-click="download()">Download</a>
         <!--<a class="in-share-btn">Tag Friends</a>ng-click="download()"<span class='large_guys' ng-bind-html="getNameForDisplay()"></span>-->
     </div>

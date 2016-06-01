@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'appServices',
-    'updateMeta'
+    'updateMeta',
+    'djds4rce.angular-socialshare'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -45,4 +46,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+ .run(function($FB){
+  $FB.init('1029741847095272');
+});

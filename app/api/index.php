@@ -91,7 +91,7 @@ function editPicture(){
   $date = new DateTime();
   $timestamp = $date->getTimestamp();
 
-  echo $former_file;// . "?" . $timestamp;
+  echo $former_file . "?" . $timestamp;
 }
 
 function getUsers(){
