@@ -3,3 +3,4 @@ dist
 .tmp
 .sass-cache
 app/images/assets/headers
+app/api/yu.png
