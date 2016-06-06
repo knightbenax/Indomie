@@ -1,13 +1,24 @@
-<div ng-include="'views/header.html'">
-</div>
-<div ng-controller="VoteController as vote">
-  <p>Vote for your preferred person</p>
-  <div ng-if="loading"></div>
-  <div ng-repeat="user in users">
-    <h4>{{user.Name}}</h4>
+<section class="in-create-section" ng-controller="VoteController as vote">
+    <p class="in-message">Vote For An Avatar</p>
+    <div class="in-voting-area">
+        <ul class="in-avatars" >
+            <li class="in-avatar" ng-repeat="user in users">
+                <img ng-src="images/assets/headers/{{user.Image}}">
+                <div class="in-avatar-tag-section">Lawyer Like no other</div>
+                <div class="in-avatar-details-section">
+                    By:<span ng-bind="user.Name">Jason Omalu</span>
+                    <span ng-bind="avatar.details">I'm like no other because I rock the mic like a freaking horse baby</span>
 
-    <!--<p>{{user.Reason}}</p>-->
-    <img ng-src="images/assets/headers/{{user.Image}}" class="vote_user"/>
-    <a class="btn btn-success" ng-href="#/user/{{user.ID}}">View</a>
-  </div>
-</div>
+                </div>
+                <div class="in-avatar-vote-section">
+                   <div class="in-votes">
+                       <span class="icon-vote-dark"></span>
+                       <span class=in-vote-count"">{{user.Votes}} votes</span>
+                   </div>
+                    <button class="in-vote-button" ng-click="vote('avatar')">Vote</button>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</section>

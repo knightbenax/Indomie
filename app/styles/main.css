@@ -7659,7 +7659,7 @@ textarea:focus ~ .in-form-bar:after {
 
 .in-avatars {
   display: flex;
-  justify-content: space-between; }
+/*justify-content: space-between;*/ }
 
 .in-avatar {
   border: 1px solid #ededed;
@@ -7669,8 +7669,9 @@ textarea:focus ~ .in-form-bar:after {
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  flex-grow: 1;
-  flex-basis: 30%;
+  /*flex-grow: 1;
+  flex-basis: 30%;*/
+  width:33.333%;
   margin: 5px; }
   .in-avatar h1, .in-avatar h2, .in-avatar h3, .in-avatar h4, .in-avatar h5, .in-avatar h6 {
     color: inherit; }

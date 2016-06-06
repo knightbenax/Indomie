@@ -15,10 +15,10 @@ function callUpload(){
 
 function callWebcam(){
   Webcam.set({
-       width: 626,
-       height: 300,
-       dest_width: 626,
-       dest_height: 300,
+       width: 640,
+       height: 480,
+       dest_width: 640,
+       dest_height: 480,
        image_format: 'png',
        jpeg_quality: 100,
        force_flash: false,

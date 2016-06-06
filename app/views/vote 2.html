@@ -1,9 +1,9 @@
-<section class="in-create-section">
+<section class="in-create-section" ng-controller="VoteController as vote">
     <p class="in-message">Vote For An Avatar</p>
     <div class="in-voting-area">
-        <ul class="in-avatars">
+        <ul class="in-avatars" ng-repeat="user in users">
             <li class="in-avatar" >
-                <img ng-bind="avatar.image" src="">
+                <img ng-src="images/assets/headers/{{user.Image}}">
                 <div class="in-avatar-tag-section">Lawyer Like no other</div>
                 <div class="in-avatar-details-section">
                     By:<span ng-bind="avatar.name">Jason Omalu</span>
