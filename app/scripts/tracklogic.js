@@ -1,7 +1,59 @@
 //'use strict';
 
 function callUpload(){
+  Webcam.reset();
+  //reset the DOM back too. Because this douche-bag of a plugin scattered everything.
+  $(".demo_container").html("<img id='user_blob'/>");
+  $(".demo_container").removeAttr("style");
   $("#file").trigger('click');
+
+  var scope = angular.element(document.querySelector(".hero")).scope();
+  scope.start = true;
+  scope.webcam = false;
+  scope.$apply();
+}
+
+function callWebcam(){
+  Webcam.set({
+       width: 626,
+       height: 300,
+       dest_width: 626,
+       dest_height: 300,
+       image_format: 'png',
+       jpeg_quality: 100,
+       force_flash: false,
+       flip_horiz: true,
+       fps: 45
+   });
+
+   //hide the label instructiosn for chooisng an image and show the one for using the webcam instead
+   var scope = angular.element(document.querySelector(".hero")).scope();
+   scope.start = false;
+   scope.webcam = true;
+   scope.$apply();
+
+  Webcam.attach('#webcam_holder');
+}
+
+function takeWebcamPicture(){
+  Webcam.snap( function(data_uri) {
+    document.getElementById('user_blob').src = data_uri;
+  } );
+
+  Webcam.reset();
+
+  //hide the webcam holder this time
+  var scope = angular.element(document.querySelector(".hero")).scope();
+  scope.start = false;
+  scope.webcam = false;
+  scope.$apply();
+
+  $('#user_blob').faceDetection({
+     complete: function (faces) {
+        console.log(faces.length);
+         completed(faces);
+     }
+  });
 }
 
 var element = $("#in-avatar-preview-area"); // global variable
@@ -83,6 +135,7 @@ function completed(faces) {
 
             scope.facescount = 0;
             scope.start = false;
+            scope.webcam = false;
             scope.$apply();
             $('#user_blob').cropper('destroy');
             $('#user_blob').cropper({
@@ -130,6 +183,7 @@ function completed(faces) {
             //facescount = 1;
             scope.facescount = 1;
             scope.start = false;
+            scope.webcam = false;
             scope.$apply();
 
             var left   = (faces[0].x - marg),
@@ -205,6 +259,7 @@ function completed(faces) {
           } else if (faces.length > 1) {
             scope.facescount = faces.length;
             scope.start = false;
+            scope.webcam = false;
             scope.$apply();
 
             $('#user_blob').cropper('destroy');
@@ -329,7 +384,7 @@ function showPreview(element) {
                           console.log(faces.length);
                            completed(faces);
                        }
-                   });
+                    });
                    NProgress.done();
                 };
 

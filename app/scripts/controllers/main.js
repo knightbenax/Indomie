@@ -139,7 +139,7 @@ var app = angular.module("oblivionApp");
 
     $scope.parentmethod = function(avatarimage) {
         // task
-        $scope.appflow = 'share-pic';
+        $scope.appflow = 'edit-pic';
 
         $scope.avatarimage = avatarimage["message"];
         $rootScope.avatarimage = $location.protocol() + "://" + $location.host() + "/indomie/images/assets/headers/" + avatarimage["message"];
@@ -176,6 +176,7 @@ var app = angular.module("oblivionApp");
 
     $scope.facescount = -1;
     $scope.start = true;
+    $scope.webcam = false;
     $scope.continue = false;
 
     $scope.pattern = 70;

@@ -16,6 +16,12 @@ body {
   padding-bottom: 20px;
 }
 
+
+/*.in-floating-button{
+  position: absolute;
+  bottom: 15px;
+} */
+
 .large_guys{
   font-family: MyriadPro;
   text-align: left;

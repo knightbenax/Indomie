@@ -41,10 +41,16 @@
 
     <p class="in-message">Choose a face for your image</p>
     <div class="in-avatar-preview-area">
-      <div class="demo_container in-avatar-image">
+
+      <div class="in-avatar-image" ng-show="webcam" id="webcam_holder"></div>
+
+      <div class="demo_container in-avatar-image" id="user_frame" ng-hide="webcam">
           <img id='user_blob'/>
       </div>
+
+        <button class="in-upload-btn in-floating-button" ng-show='webcam' onclick="takeWebcamPicture()">Take Snapshot</button>
         <span class="in-avatar-caption" ng-show='start'>Use a clear image of your face</span>
+        <span class="in-avatar-caption" ng-show='webcam'>Position and take a snapshot</span>
         <span class="in-avatar-caption" ng-show='checkNoFaceCount()'>No face was detected in the picture. Probably due to it's quality. Select a face you want to use instead by dragging over the image</span>
         <span class="in-avatar-caption" ng-show='checkSingleFaceCount()'>A face was detected. You can still adjust the area you want to use by dragging the crop box if you are not satisfied</span>
         <span class="in-avatar-caption" ng-show='checkFaceCount()'>Looks that there is more than one face in this picture. Select the face you want to use by dragging over the image</span>
@@ -54,7 +60,7 @@
 
         <div class="fileholder"><input type="file" name="file" id="file" accept="image/*" file-model="myFile" onchange="showPreview(this)"/></div>
         <button class="in-upload-btn" onclick="callUpload()">Upload a photo</button>
-        <button class="in-upload-btn" onclick="callUpload()">Use Webcam</button>
+        <button class="in-upload-btn" onclick="callWebcam()">Use Webcam</button>
 
        <!--<span>or</span>
 
@@ -66,9 +72,9 @@
 </section>
 
 
-<section class="in-create-section" ng-show="appflow=='share-pic'">
+<section class="in-create-section" ng-show="appflow=='edit-pic'">
 
-    <p class="in-message"> Congratulations Youve Created your avatar</p>
+    <p class="in-message">Edit your avatar</p>
     <div class="in-avatar-preview-area" id="in-avatar-preview-area">
         <div class="in-avatar-image">
             <img ng-src="images/assets/headers/{{avatarimage}}">
@@ -109,16 +115,31 @@
       <button class="in-upload-btn" ng-click="editPicture()">Apply</button>
     </div>
 
-    <div class="in-action-choices-area">
-        <a facebook-feed-share class="in-share-btn" data-picture="images/header_logo.png" data-url='http://google.com' data-shares='shares', data-description="Example text">Share to Facebook</a>
-        <a class="in-share-btn" target="_blank" href="https://twitter.com/intent/tweet?text=Share%20your%20indomie%20avatar&button_hashtag=IndomieContest">Share to Twitter</a>
 
-        <a gplus class="in-share-btn" data-size="tall" data-href='http://google.com' data-action='share'></a>
-        <a pintrest data-href='http://google.com' class="in-share-btn"  data-description='testing share' data-img='http://plnkr.co/img/plunker.png' data-pin-do='buttonPin' data-pin-config='beside'>Pin This</a>
-        <a class="in-share-btn" ng-click="download()">Download</a>
-        <!--<a class="in-share-btn">Tag Friends</a>ng-click="download()"<span class='large_guys' ng-bind-html="getNameForDisplay()"></span>-->
-    </div>
+        <a class="in-prev-button" ng-click="changeview('upload-image')">Back</a>
+        <a class="in-next-button" ng-click="changeview('share-pic')">Continue</a>
     <!--<a class="in-next-button" ng-click="" ng-href="#/vote">Submit for Voting</a>-->
+
+</section>
+
+<section class="in-create-section" ng-show="appflow=='share-pic'">
+
+  <p class="in-message"> Congratulations You've Created your avatar</p>
+  <div class="in-avatar-preview-area" id="in-avatar-preview-area">
+      <div class="in-avatar-image">
+          <img ng-src="images/assets/headers/{{avatarimage}}">
+      </div>
+  </div>
+
+  <div class="in-action-choices-area">
+      <a facebook-feed-share class="in-share-btn" data-picture="images/header_logo.png" data-url='http://google.com' data-shares='shares', data-description="Example text">Share to Facebook</a>
+      <a class="in-share-btn" target="_blank" href="https://twitter.com/intent/tweet?text=Share%20your%20indomie%20avatar&button_hashtag=IndomieContest">Share to Twitter</a>
+
+      <a gplus class="in-share-btn" data-size="tall" data-href='http://google.com' data-action='share'></a>
+      <a pintrest data-href='http://google.com' class="in-share-btn"  data-description='testing share' data-img='http://plnkr.co/img/plunker.png' data-pin-do='buttonPin' data-pin-config='beside'>Pin This</a>
+      <a class="in-share-btn" ng-click="download()">Download</a>
+      <!--<a class="in-share-btn">Tag Friends</a>ng-click="download()"<span class='large_guys' ng-bind-html="getNameForDisplay()"></span>-->
+  </div>
 
 </section>
 </div>
