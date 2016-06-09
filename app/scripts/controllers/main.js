@@ -304,11 +304,11 @@ var app = angular.module("oblivionApp");
          ctx.fill();
 
     // image id of a particular pattern to use as the background image...optional....
-         var imgpatter=document.getElementById('imgbg');
+         /*var imgpatter=document.getElementById('imgbg');
          var pat=ctx.createPattern(imgpatter,"repeat"); //creates a repeat pattern of the image
          ctx.rect(0,0,600,400); //x,y cordinates to start filling from with width and height
          ctx.fillStyle=pat;
-         ctx.fill();
+         ctx.fill();*/
 
          //add indomie logo id
          var imglogo=document.getElementById("indomie_logo");
@@ -320,7 +320,7 @@ var app = angular.module("oblivionApp");
 
          ctx.font = "30px Delius Swash Caps";
          //source of the player_name
-         var player_name=  document.getElementById('player_name').textContent;
+         var player_name = $scope.myName;//=  document.getElementById('player_name').textContent;
 
     //create a link tag to any font-style you want to use for the name
          var link = document.createElement('link');
