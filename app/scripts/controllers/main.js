@@ -285,6 +285,136 @@ var app = angular.module("oblivionApp");
    };
     //$scope.response = JSON.parse(content); // Presumed content is a json string!
 
+
+    $scope.draw=function(){
+         //this draws all the element on the canvas;
+
+         //get reference to the canvas by its canvas id
+         var c = document.getElementById("image_canvas");
+         var ctx = c.getContext("2d");
+         ctx.clearRect(0, 0, c.width, c.height);//clears the content of the canvas before drawing
+
+
+    //fills the whole canvas with a background color...optional
+         ctx.beginPath();
+         ctx.rect(0, 0, 600, 400);  //x,y cordinates to start filling from with width and height
+         ctx.fillStyle = "#e74908"; //color to fill
+         ctx.fill();
+
+    // image id of a particular pattern to use as the background image...optional....
+         var imgpatter=document.getElementById('imgbg');
+         var pat=ctx.createPattern(imgpatter,"repeat"); //creates a repeat pattern of the image
+         ctx.rect(0,0,600,400); //x,y cordinates to start filling from with width and height
+         ctx.fillStyle=pat;
+         ctx.fill();
+
+         //add indomie logo id
+         var imglogo=document.getElementById("indomie_logo");
+    //x,y cordinates to start filling from with width and height of the image
+         ctx.drawImage(imglogo,320,40, 118,56);
+
+         var maxWidth = 200;
+         var lineHeight = 25; //sets maximum width and lineheight for the user name for warping the text-align
+
+         ctx.font = "30px Delius Swash Caps";
+         //source of the player_name
+         var player_name=  document.getElementById('player_name').textContent;
+
+    //create a link tag to any font-style you want to use for the name
+         var link = document.createElement('link');
+         link.rel = 'stylesheet';
+         link.type = 'text/css';
+    //link to the font
+         link.href = 'http://fonts.googleapis.com/css?family=Delius+Swash+Caps';
+    //appends the link to head tag
+         document.getElementsByTagName('head')[0].appendChild(link);
+
+    //fakes an initialisation of the font.
+         var image = new Image;
+         image.src = link.href;
+         image.onerror = function() {
+             ctx.font = '20px "Delius Swash Caps"'; //font name
+             ctx.fillStyle = '#f7f7f7'; //font-color
+           //
+             $scope.wrapText(ctx, player_name, 310, 130, maxWidth, lineHeight);//calls a function that wrap the text and draws it.
+         };
+         //ctx.font= "20px 'Delius Swash Caps'";
+
+
+         //ctx.fillText(t,310,100);
+
+    //img tag ID of the created avatar Image.
+         var ava_img= document.getElementById('avatar_img');
+
+         var imgh= 200; //image height
+         var imgw= 150;  // image width
+         console.log(imgh);
+         ctx.drawImage(ava_img,0,60,imgw, imgh); //img source, x,y,width and height of image
+         $scope.appflow="card_view";
+     }
+
+    //text wrap function
+     $scope.wrapText=function(context, text, x, y, maxWidth, lineHeight) {
+         text=text.replace(/\./g, ". ")
+         var words = text.split(' ');
+         var line = '';
+         for(var n = 0; n < words.length; n++) {
+           var testLine = line + words[n] + ' ';
+           var metrics = context.measureText(testLine);
+           var testWidth = metrics.width;
+           if(words[n].indexOf('.')>0 || words[n].indexOf(':')>0 ){
+             line=line+words[n];
+             context.fillText(line, x, y);
+             y += lineHeight*2;
+             line='';
+             continue;
+
+             //console.log(words[n])
+         }
+           if (testWidth > maxWidth && n > 0) {
+             context.fillText(line, x, y);
+             line = words[n] + ' ';
+             y += lineHeight;
+
+           }
+           else {
+             line = testLine;
+           }
+         }
+         context.fillText(line, x, y);
+     }
+
+    //to save the image
+    $scope.saveimg=function(){
+         $scope.message=true;
+         var c = document.getElementById("image_canvas");
+         var img = c.toDataURL("image/jpeg"); //coverts to base64;
+         var form_data=parsetoformdata(img); //call this function to parse into form data
+         $http.post('server/upload.php',  form_data, { //phpcode to process the image
+                     transformRequest: angular.identity,
+                     headers: {'Content-Type': undefined}                })
+          .then(function(response){
+
+              var url='http://indomie.com/images/'+response.data;
+
+           },
+          function(err){  $scope.note_message='error'});
+     }
+
+     var parsetoformdata= function(data){
+         var form_data = new FormData();
+         if(typeof(data)==='object'){
+             for ( var key in data ) {
+                 form_data.append(key, data[key]);
+             }
+         }
+         else if(data!=''){
+             form_data.append('data', data);
+         }
+         else{form_data.append('data', '');}
+         return form_data;
+     }
+
   }]);
 
 

@@ -127,7 +127,11 @@
   <p class="in-message"> Congratulations You've Created your avatar</p>
   <div class="in-avatar-preview-area" id="in-avatar-preview-area">
       <div class="in-avatar-image">
-          <img ng-src="images/assets/headers/{{avatarimage}}">
+        <canvas id="image_canvas" width="540" height="400" >
+          Your browser does not support the HTML5 canvas tag.
+        </canvas>
+
+        <!--<img ng-src="images/assets/headers/{{avatarimage}}">-->
       </div>
   </div>
 
