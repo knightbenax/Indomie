@@ -29,6 +29,7 @@ try {
     $app->post('/edit_picture', 'editPicture');
     $app->get('/users', 'getUsers');
     $app->get('/get_image', 'getImage');
+    $app->get('/get_temp', 'showTmp');
     $app->get('/user', 'getUser');
     //$app->get('/user/:id', 'getUser');
     $app->run();
@@ -47,7 +48,13 @@ try {
     }
 }
 
-/*function getConnection()
+
+function showTmp(){
+  $tmp_dir = ini_get('upload_tmp_dir') ? ini_get('upload_tmp_dir') : sys_get_temp_dir();
+  die($tmp_dir);
+}
+
+function getConnection()
 {
     $dbhost="127.0.0.1";
     //$dbport="8889";
@@ -57,9 +64,9 @@ try {
     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;
-}*/
+}
 
-function getConnection()
+/*function getConnection()
 {
     $dbhost="localhost";
     //$dbport="8889";
@@ -69,7 +76,7 @@ function getConnection()
     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;
-}
+}*/
 
 
 function editPicture(){
@@ -91,7 +98,7 @@ function editPicture(){
   $date = new DateTime();
   $timestamp = $date->getTimestamp();
 
-  echo $former_file . "?" . $timestamp;
+  echo $former_file;// . "?" . $timestamp;
 }
 
 function getUsers(){

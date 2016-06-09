@@ -126,6 +126,7 @@ var app = angular.module("oblivionApp");
   app.controller('CreateController', ['$scope', '$http', 'fileUpload', '$location', '$rootScope', '$sce', 'MetaService', function($scope, $http, fileUpload, $location, $rootScope, $sce, MetaServic){
     $scope.appflow = "create-message";
     $scope.avatarimage = "";
+    $scope.avatardate = "";
 
     $rootScope.$on("CallSharePicBoxGlobal", function(event, data){
           $scope.parentmethod(data);
@@ -256,6 +257,7 @@ var app = angular.module("oblivionApp");
 
       $http.post('api/edit_picture', data, config).success(function(return_data){
         $scope.avatarimage = return_data;
+        $scope.avatardate = "?" + Date.now();
         NProgress.done();
         //console.log($scope.singleuser.Name);
       });

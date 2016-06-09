@@ -77,7 +77,7 @@
     <p class="in-message">Edit your avatar</p>
     <div class="in-avatar-preview-area" id="in-avatar-preview-area">
         <div class="in-avatar-image">
-            <img ng-src="images/assets/headers/{{avatarimage}}">
+            <img ng-src="images/assets/headers/{{avatarimage}}{{avatardate}}">
         </div>
     </div>
 
@@ -122,7 +122,7 @@
 
 </section>
 
-<section class="in-create-section" ng-show="appflow=='share-pic'">
+<section class="in-create-section" ng-show="appflow=='share-pic'" ng-init="draw()">
 
   <p class="in-message"> Congratulations You've Created your avatar</p>
   <div class="in-avatar-preview-area" id="in-avatar-preview-area">
