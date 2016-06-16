@@ -191,6 +191,39 @@ function getImage(){
   readfile($filePath);*/
 }
 
+function addText($img_blob, $file_path, $name){
+
+  $text = $name;
+  $text_2 = "Rapper";
+  $text_3 = "Like No Other";
+
+  $font =  realpath(__DIR__ . '/..') . "/fonts/MyriadPro-Bold/MyriadPro-Bold.ttf";
+
+  $black = imagecolorallocate($img_blob, 0, 0, 0);
+  $white = imagecolorallocate($img_blob, 255, 255, 255);
+
+  imagettftext($img_blob, 40, 0, 20, 640, $black, $font, $text);
+
+  imagettftext($img_blob, 40, 0, 20, 700, $black, $font, $text_2);
+
+  imagettftext($img_blob, 40, 0, 20, 760, $black, $font, $text_3);
+
+  imagepng($img_blob, $file_path, 9);
+}
+
+
+function stitchImagesWithLogo($img_blob, $file_path){
+  $logo = imagecreatefrompng(realpath(__DIR__ . '/..') . "/images/indomie.png");
+
+  imagealphablending($logo, false);
+  imagesavealpha($logo, true);
+
+  imagecopy($img_blob, $logo, 20, 20, 0, 0, 150, 110);
+
+  imagepng($img_blob, $file_path, 9);
+}
+
+
 function stitchImagesWithBg($img_blob, $file_path){
   $bg = imagecreatefrompng(realpath(__DIR__ . '/..') . "/images/bg.png");
   //imagealphablending($bg, false);
@@ -337,13 +370,13 @@ function uploadPicture()
     $src = imagecreatefromstring(file_get_contents($file_path));
     $dst = imagecreatetruecolor($width, $new_height);
 
-    imagecopyresampled($dst,$src,0,0,0,0,$width,$new_height,$size[0],$size[1]);
+    imagecopyresampled($dst,$src, 0, 0, 0, 0, $width, $new_height, $size[0], $size[1]);
     imagepng($dst, $file_path);
 
     $thumb_im = imagecreatefromstring(file_get_contents($file_path));
 
     //add the white bg behind each image
-    //stitchImagesWithBg($thumb_im, $file_path);
+    stitchImagesWithBg($thumb_im, $file_path);
 
     $final_im = $timestamp . $newfilename;
 
@@ -351,30 +384,31 @@ function uploadPicture()
 
     toon($file_path);
 
-    daveHill($file_path);
+    //daveHill($file_path);
 
     //
 
 
     //crossHatch($file_path);
 
-    $imagick = new Imagick(realpath($file_path));
+    //$imagick = new Imagick(realpath($file_path));
     //@$imagick->reduceNoiseImage(5);
     //$imagick->oilPaintImage(1);
 
-    $tint = new \ImagickPixel("rgb(138, 100, 77)");
+    //$tint = new \ImagickPixel("rgb(138, 100, 77)");
     //$imagick->tintImage($tint, 255);
-    $imagick->writeImage($file_path);
+    //$imagick->writeImage($file_path);
     //file_put_contents ($final_im, $imagick);
     //illustrateImage($file_path);
     $new_img = imagecreatefromstring(file_get_contents($file_path));
 
     //add the image with the avatar
     stitchImagesWithAvatar($new_img, $file_path);
+    stitchImagesWithLogo($new_img, $file_path);
 
+    addText($new_img, $file_path, $name);
 
-
-    $file_path_x = __DIR__  . "/yu.png";
+    /*$file_path_x = __DIR__  . "/yu.png";
 
 
     $im = @imagecreatetruecolor(842, 200);
@@ -397,7 +431,7 @@ function uploadPicture()
     //imagedestroy($im);
 
     $new_img_final = imagecreatefromstring(file_get_contents($file_path));
-    $second_new_img_final = imagecreatefromstring(file_get_contents($file_path_x));
+    $second_new_img_final = imagecreatefromstring(file_get_contents($file_path_x));*/
 
     //stitchImagesWithNameTag($new_img_final, $im, $file_path);
 

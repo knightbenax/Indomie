@@ -40,7 +40,7 @@ angular
         //controller: 'CreateController'
       })
       .when('/share/:userid', {
-        templateUrl: 'views/share.html',
+        templateUrl: 'views/share.html'
         //controller: 'CreateController'
       })
       .otherwise({
