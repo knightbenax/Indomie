@@ -122,18 +122,18 @@
 
 </section>
 
-<section class="in-create-section" ng-show="appflow=='share-pic'" ng-init="draw()">
+<section class="in-create-section" ng-show="appflow=='share-pic'" >
 
   <p class="in-message"> Congratulations You've Created your avatar</p>
   <div class="in-avatar-preview-area" id="in-avatar-preview-area">
       <div class="in-avatar-image">
-        <img src="images/header_logo.png" id="indomie_logo">
+        <img src="images/header_logo.png" id="indomie_logo" ng-show="indomie">
 
-        <canvas id="image_canvas" width="540" height="400" >
+        <!--<canvas id="image_canvas" width="540" height="400" >
           Your browser does not support the HTML5 canvas tag.
-        </canvas>
+        </canvas>-->
 
-        <!--<img ng-src="images/assets/headers/{{avatarimage}}">-->
+        <img ng-src="images/assets/headers/{{avatarimage}}">
       </div>
   </div>
 

@@ -363,14 +363,14 @@ function uploadPicture()
     //$imagick->oilPaintImage(1);
 
     $tint = new \ImagickPixel("rgb(138, 100, 77)");
-    $imagick->tintImage($tint, 255);
+    //$imagick->tintImage($tint, 255);
     $imagick->writeImage($file_path);
     //file_put_contents ($final_im, $imagick);
     //illustrateImage($file_path);
     $new_img = imagecreatefromstring(file_get_contents($file_path));
 
     //add the image with the avatar
-    //stitchImagesWithAvatar($new_img, $file_path);
+    stitchImagesWithAvatar($new_img, $file_path);
 
 
 
@@ -406,16 +406,6 @@ function uploadPicture()
     echo $final_im;
 
     //imagedestroy($im);
-
-    //text($file_path_x);
-
-    //cartoonImage($file_path);
-    //$stmt = $dbConnection->prepare("UPDATE `Users` SET `Header` = :header WHERE `Email` = :email");
-    //$stmt->bindParam(':email', $user);
-    //$stmt->bindParam(':header', $headername);
-
-    //$stmt->execute(array(":email" => $user, ":header" => $headername));
-    //echo "success";
   } else{
       echo "fail";
   }

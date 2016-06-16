@@ -140,7 +140,8 @@ var app = angular.module("oblivionApp");
 
     $scope.parentmethod = function(avatarimage) {
         // task
-        $scope.appflow = 'edit-pic';
+        //$scope.appflow = 'edit-pic';
+        $scope.appflow = 'share-pic';
 
         $scope.avatarimage = avatarimage["message"];
         $rootScope.avatarimage = $location.protocol() + "://" + $location.host() + "/indomie/images/assets/headers/" + avatarimage["message"];
@@ -289,70 +290,15 @@ var app = angular.module("oblivionApp");
 
 
     $scope.draw=function(){
-         //this draws all the element on the canvas;
-
-         //get reference to the canvas by its canvas id
-         var c = document.getElementById("image_canvas");
-         var ctx = c.getContext("2d");
-         ctx.clearRect(0, 0, c.width, c.height);//clears the content of the canvas before drawing
-
-
-    //fills the whole canvas with a background color...optional
-         ctx.beginPath();
-         ctx.rect(0, 0, 600, 400);  //x,y cordinates to start filling from with width and height
-         ctx.fillStyle = "#e74908"; //color to fill
-         ctx.fill();
-
-    // image id of a particular pattern to use as the background image...optional....
-         /*var imgpatter=document.getElementById('imgbg');
-         var pat=ctx.createPattern(imgpatter,"repeat"); //creates a repeat pattern of the image
-         ctx.rect(0,0,600,400); //x,y cordinates to start filling from with width and height
-         ctx.fillStyle=pat;
-         ctx.fill();*/
-
-         //add indomie logo id
-         var imglogo=document.getElementById("indomie_logo");
-    //x,y cordinates to start filling from with width and height of the image
-         ctx.drawImage(imglogo,320,40, 118,56);
-
-         var maxWidth = 200;
-         var lineHeight = 25; //sets maximum width and lineheight for the user name for warping the text-align
-
-         ctx.font = "30px Delius Swash Caps";
-         //source of the player_name
-         var player_name = $scope.myName;//=  document.getElementById('player_name').textContent;
-
-    //create a link tag to any font-style you want to use for the name
-         var link = document.createElement('link');
-         link.rel = 'stylesheet';
-         link.type = 'text/css';
-    //link to the font
-         link.href = 'http://fonts.googleapis.com/css?family=Delius+Swash+Caps';
-    //appends the link to head tag
-         document.getElementsByTagName('head')[0].appendChild(link);
-
-    //fakes an initialisation of the font.
-         var image = new Image;
-         image.src = link.href;
-         image.onerror = function() {
-             ctx.font = '20px "Delius Swash Caps"'; //font name
-             ctx.fillStyle = '#f7f7f7'; //font-color
-           //
-             $scope.wrapText(ctx, player_name, 310, 130, maxWidth, lineHeight);//calls a function that wrap the text and draws it.
-         };
-         //ctx.font= "20px 'Delius Swash Caps'";
-
-
-         //ctx.fillText(t,310,100);
-
-    //img tag ID of the created avatar Image.
-         var ava_img= document.getElementById('avatar_img');
-
-         var imgh= 200; //image height
-         var imgw= 150;  // image width
-         console.log(imgh);
-         ctx.drawImage(ava_img,0,60,imgw, imgh); //img source, x,y,width and height of image
-         $scope.appflow="card_view";
+      var canvas = document.getElementById("image_canvas");
+      var context = canvas.getContext("2d");
+      var imageObj = new Image();
+      imageObj.onload = function(){
+          context.drawImage(imageObj, 10, 10);
+          context.font = "40pt Calibri";
+          context.fillText("My TEXT!", 20, 20);
+      };
+      imageObj.src = "images/assets/headers/" + $scope.avatarimage; //"darth-vader.jpg";
      }
 
     //text wrap function
