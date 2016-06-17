@@ -58,7 +58,7 @@
     </div>
     <div class="in-action-choices-area">
 
-        <div class="fileholder"><input type="file" name="file" id="file" accept="image/*" file-model="myFile" onchange="showPreview(this)"/></div>
+        <div class="fileholder"><input type="file" name="file" id="file" accept="image/*" file-model="myFile" onchange="changeFile(this)"/></div><!--onchange="showPreview(this)"-->
         <button class="in-upload-btn" onclick="callUpload()">Upload a photo</button>
         <button class="in-upload-btn" onclick="callWebcam()">Use Webcam</button>
 
@@ -138,7 +138,7 @@
   </div>
 
   <div class="in-action-choices-area">
-      <a facebook-feed-share class="in-share-btn" data-picture="images/header_logo.png" data-url='http://google.com' data-shares='shares', data-description="Example text">Share to Facebook</a>
+      <a facebook-feed-share class="in-share-btn" data-picture="images/assets/headers/{{avatarimage}}" data-url='http://google.com'  data-shares='shares' data-description="Example text">Share to Facebook</a>
       <a class="in-share-btn" target="_blank" href="https://twitter.com/intent/tweet?text=Share%20your%20indomie%20avatar&button_hashtag=IndomieContest">Share to Twitter</a>
 
       <a gplus class="in-share-btn" data-size="tall" data-href='http://google.com' data-action='share'></a>
