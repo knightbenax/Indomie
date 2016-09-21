@@ -197,7 +197,8 @@ function addText($img_blob, $file_path, $name){
   $text_2 = "Rapper";
   $text_3 = "Like No Other";
 
-  $font =  realpath(__DIR__ . '/..') . "/fonts/MyriadPro-Bold/MyriadPro-Bold.ttf";
+  //$font =  realpath(__DIR__ . '/..') . "/fonts/MyriadPro-Bold/MyriadPro-Bold.ttf";
+  $font =  realpath(__DIR__ . '/..') . "/fonts/DeFonarts/DeFonarts Bold_1.ttf";
 
   $black = imagecolorallocate($img_blob, 0, 0, 0);
   $white = imagecolorallocate($img_blob, 255, 255, 255);

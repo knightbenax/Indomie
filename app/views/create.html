@@ -36,6 +36,19 @@
 <a class="in-next-button" ng-click="changeview('upload-image')">Continue</a>
 </section>
 
+<section class="in-create-section" ng-show="appflow=='instructions'" >
+
+  <p class="in-message">You are going to provide a picture with your face in the next section. As much as our algorthim is going to try and predict your face from the picture, it might not be 100% perfect. So you might have to make adjustments or select a face yourself. Make the select or adjustment look in that in the image below</p>
+
+  <div class="in-avatar-image" ng-hide="webcam">
+      <img id='instructions_img' />
+  </div>
+
+  <a class="in-prev-button" ng-click="changeview('create-message')">Back</a>
+  <a class="in-next-button" ng-click="uploadFile()">Continue</a>
+
+</section>
+
 
 <section class="in-create-section" ng-show="appflow=='upload-image'">
 
